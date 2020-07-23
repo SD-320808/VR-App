@@ -7,4 +7,5 @@ export { default as ForgotPasswordScreen } from './ForgotPasswordScreen';
 export { default as Dashboard } from './Dashboard';
 export { default as ModeScreen } from './ModeScreen';
 export { default as Verification } from './verificationscreen';
+export {default as MerchantDashboard } from "./MerchantDashboard"
 

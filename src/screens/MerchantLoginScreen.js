@@ -23,7 +23,7 @@ const MerchantLoginScreen = ({ navigation }) => {
       return;
     }
 
-    navigation.navigate('Dashboard');
+    navigation.navigate('MerchantDashboard');
   };
 
   return (
