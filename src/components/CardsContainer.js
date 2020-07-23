@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View,ScrollView } from 'react-native';
 // create a component
 class CardsContainer extends Component {
    renderCards() {
@@ -13,9 +13,9 @@ class CardsContainer extends Component {
    }
    render() {
       return (
-         <View>
+         <ScrollView>
             {this.renderCards()}
-         </View>
+         </ScrollView>
       );
    }
 }

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {
    StyleSheet,
    Text,
-   View
+   View,
   } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import CardsContainer from './src/CardsContainer';
+import { SafeAreaView } from 'react-navigation';
 const DATA = [
 { id: 1, text: 'Card #1', uri: 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f28261f0564880c9086a57ee87a68887&auto=format&fit=crop&w=500&q=60' },
 { id: 2, text: 'Card #2', uri: 'https://images.unsplash.com/photo-1535576434247-e0f50b766399?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=232f6dbab45b3f3a6f97e638c27fded2&auto=format&fit=crop&w=500&q=60' },
@@ -19,34 +20,36 @@ const DATA = [
 export default class App extends Component {
    renderCard(item) {
       return (
+         
          <Card
             key={item.id}
             title={item.text}
             image={{ uri: item.uri }}
          >
             <Text style={{ marginBottom: 10 }}>
-               Testing....
+            Price Rs100
             </Text>
             <Button
                backgroundColor='#03A9F4'
                title="More details"
             />
          </Card>
+        
       );
    }
    render() {
       return (
-         <View style={styles.container}>
+            <View>
             <CardsContainer
                data={DATA}
                renderCard={this.renderCard}
             />
-         </View>
+           </View>
       );
    }
 }
 const styles = StyleSheet.create({
    container: {
-      flex: 1,
+      flex: 1
    }
 });
