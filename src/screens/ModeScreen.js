@@ -8,16 +8,19 @@ import Paragraph from '../components/Paragraph';
 const ModeScreen = ({ navigation }) => (
   <Background>
     <Logo />
-    <Header>Select Type</Header>
+    <Header>Select the type</Header>
 
-    <Button mode="contained" onPress={() => navigation.navigate('MerchantHomeScreen')}>
-      MERCHANT
+    {/* <Paragraph>
+      The easiest way to start with your amazing application.
+    </Paragraph> */}
+    <Button mode="contained" onPress={() => navigation.navigate('HomeScreen')}>
+      Customer
     </Button>
     <Button
       mode="outlined"
-      onPress={() => navigation.navigate('RegisterScreen')}
+      onPress={() => navigation.navigate('MerchantHomeScreen')}
     >
-      CUSTOMER
+      Moderator
     </Button>
   </Background>
 );

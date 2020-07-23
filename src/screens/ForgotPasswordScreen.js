@@ -26,8 +26,8 @@ const ForgotPasswordScreen = ({ navigation }) => {
   return (
     <Background>
       <BackButton goBack={() => navigation.navigate('LoginScreen')} />
-      <Cam/>
-       <Logo />
+
+      <Logo />
 
       <Header>Restore Password</Header>
 
@@ -53,8 +53,9 @@ const ForgotPasswordScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('LoginScreen')}
       >
         <Text style={styles.label}>← Back to login</Text>
-      </TouchableOpacity> 
-     </Background>
+      </TouchableOpacity>
+    </Background>
+
   );
 };
 

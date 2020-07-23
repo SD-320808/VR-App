@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -7,30 +7,23 @@ import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
-import {
-  emailValidator,
-  passwordValidator,
-  nameValidator,
-} from '../core/utils';
+import { emailValidator, passwordValidator } from '../core/utils';
 
-const RegisterScreen = ({ navigation }) => {
-  const [name, setName] = useState({ value: '', error: '' });
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
 
-  const _onSignUpPressed = () => {
-    const nameError = nameValidator(name.value);
+  const _onLoginPressed = () => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
 
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError });
+    if (emailError || passwordError) {
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       return;
     }
 
-    navigation.navigate('Verification');
+    navigation.navigate('Dashboard');
   };
 
   return (
@@ -39,16 +32,7 @@ const RegisterScreen = ({ navigation }) => {
 
       <Logo />
 
-      <Header>Create Account</Header>
-
-      <TextInput
-        label="Name"
-        returnKeyType="next"
-        value={name.value}
-        onChangeText={text => setName({ value: text, error: '' })}
-        error={!!name.error}
-        errorText={name.error}
-      />
+      <Header>Welcome back.</Header>
 
       <TextInput
         label="Email"
@@ -73,14 +57,22 @@ const RegisterScreen = ({ navigation }) => {
         secureTextEntry
       />
 
-      <Button mode="contained" onPress={_onSignUpPressed} style={styles.button}>
-        Sign Up
+      <View style={styles.forgotPassword}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}
+        >
+          <Text style={styles.label}>Forgot your password?</Text>
+        </TouchableOpacity>
+      </View>
+
+      <Button mode="contained" onPress={_onLoginPressed}>
+        Login
       </Button>
 
       <View style={styles.row}>
-        <Text style={styles.label}>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={styles.link}>Login</Text>
+        <Text style={styles.label}>Don’t have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+          <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </Background>
@@ -88,15 +80,17 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  label: {
-    color: theme.colors.secondary,
-  },
-  button: {
-    marginTop: 24,
+  forgotPassword: {
+    width: '100%',
+    alignItems: 'flex-end',
+    marginBottom: 24,
   },
   row: {
     flexDirection: 'row',
     marginTop: 4,
+  },
+  label: {
+    color: theme.colors.secondary,
   },
   link: {
     fontWeight: 'bold',
@@ -104,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(RegisterScreen);
+export default memo(LoginScreen);

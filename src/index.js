@@ -8,6 +8,9 @@ import {
   ForgotPasswordScreen,
   Dashboard,
   MerchantHomeScreen,
+  HomeScreen,
+  LoginScreen,
+  Verification
 } from './screens';
 
 const Router = createStackNavigator(
@@ -18,6 +21,9 @@ const Router = createStackNavigator(
     RegisterScreen,
     ForgotPasswordScreen,
     Dashboard,
+    HomeScreen,
+    LoginScreen,
+    Verification
   },
   {
     initialRouteName: 'ModeScreen',
