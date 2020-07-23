@@ -8,7 +8,7 @@ import Paragraph from '../components/Paragraph';
 
 const HomeScreen = ({ navigation }) => (
   <Background>
-     <BackButton goBack={() => navigation.navigate('modescreen')} />
+     <BackButton goBack={() => navigation.navigate('ModeScreen')} />
     <Logo />
     <Header>Login</Header>
 
